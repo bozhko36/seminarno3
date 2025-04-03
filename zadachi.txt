@@ -1,0 +1,216 @@
+#include <stdio.h>
+
+int main() {
+    Zadacha1
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter nums: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int maxStart = 0, maxLength = 1;
+    int currentStart = 0, currentLength = 1;
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] == arr[i - 1]) {
+            currentLength++;
+        } else {
+            if (currentLength > maxLength) {
+                maxLength = currentLength;
+                maxStart = currentStart;
+            }
+            currentStart = i;
+            currentLength = 1;
+        }
+    }
+
+    if (currentLength > maxLength) {
+        maxLength = currentLength;
+        maxStart = currentStart;
+    }
+
+    printf("start: %d length: %d", maxStart, maxLength);
+    
+    Zadacha2
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter nums: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int isTrue = 1;
+    for (int i = 1; i < n - 1; i++) {
+        if (!((arr[i - 1] < arr[i] && arr[i] > arr[i + 1]) || (arr[i - 1] > arr[i] && arr[i] < arr[i + 1]))) {
+            isTrue = 0;
+            break;
+        }
+    }
+
+    if (isAlternating) {
+        printf("Yes");
+    } else {
+        printf("No");
+    }
+
+    Zadacha3
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter nums: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    for (int i = n - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+
+    Zadacha5
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter nums: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    int k;
+    printf("k: ");
+    scanf("%d", &k);
+
+    int firstnum;
+    for (int i = 0; i < k; i++) {
+        firstnum = arr[n - 1];
+        for (int j = n - 1; j > 0; j--) {
+            arr[j] = arr[j - 1];
+        }
+        arr[0] = firstnum;
+    }
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    Zadacha6
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter nums: ");
+    for (int i = 0; i < n; i++){
+    scanf("%d", &arr[i]);
+    }
+
+    int maxInc = 1, maxDec = 1, incStart = 0, decStart = 0;
+    int currInc = 1, currDec = 1, startInc = 0, startDec = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > arr[i - 1]) {
+            currInc++;
+            if (currInc > maxInc) {
+                maxInc = currInc;
+                incStart = startInc;
+            }
+        } else {
+            currInc = 1;
+            startInc = i;
+        }
+        if (arr[i] < arr[i - 1]) {
+            currDec++;
+            if (currDec > maxDec) {
+                maxDec = currDec;
+                decStart = startDec;
+            }
+        } else {
+            currDec = 1;
+            startDec = i;
+        }
+    }
+
+    if (maxInc >= maxDec) {
+        printf("Longest increasing: ");
+        for (int i = incStart; i < incStart + maxInc; i++){
+        printf("%d ", arr[i]);
+        }
+    } 
+    else {
+        printf("Longest decreasing: ");
+        for (int i = decStart; i < decStart + maxDec; i++){
+        printf("%d ", arr[i]);
+        } 
+    }
+
+    Zadacha7
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter nums: ");
+    for (int i = 0; i < n; i++){
+       scanf("%d", &arr[i]); 
+    } 
+    
+    int suma;
+    printf("Enter target sum: ");
+    scanf("%d", &suma);
+
+    for (int start = 0; start < n; start++) {
+        int sum = 0;
+        for (int end = start; end < n; end++) {
+            sum += arr[end];
+            if (sum == suma) {
+                printf("%d: ", suma);
+                for (int i = start; i <= end; i++) {
+                    printf("%d ", arr[i]);
+                }
+                printf("\n");
+                return 0;
+            }
+        }
+    }
+    printf("No.");
+
+    Zad9
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    
+    printf("Enter nums: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    int maxLen = 1, currLen = 1, maxStart = 0, currStart = 0;
+    
+    for (int i = 1; i < n; i++) {
+        if (arr[i] == arr[i - 1]) {
+            currLen++;
+        } else {
+            if (currLen > maxLen) {
+                maxLen = currLen;
+                maxStart = currStart;
+            }
+            currLen = 1;
+            currStart = i;
+        }
+    }
+    
+    if (currLen > maxLen) {
+        maxLen = currLen;
+        maxStart = currStart;
+    }
+    
+    for (int i = maxStart; i < maxStart + maxLen; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+
+    
+}
